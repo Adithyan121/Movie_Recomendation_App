@@ -1,0 +1,32 @@
+/* /movie-app
+├── /public
+├── /src
+│   ├── /components
+│   │   ├── Navbar.jsx
+│   │   ├── Search.jsx
+│   │   ├── MovieCard.jsx
+│   │   ├── MovieList.jsx
+│   │   ├── Watchlist.jsx
+│   │   ├── Ai_chatbot.jsx
+│   ├── /pages
+│   │   ├── Home.jsx
+│   │   ├── SearchResults.jsx
+│   │   ├── RandomMovie.jsx
+│   │   ├── MovieDetails.jsx
+│   ├── /css
+│   │   ├── navbar.css
+│   │   ├── movieCard.css
+│   │   ├── MovieList.css
+│   │   ├── Search.css
+│   │   ├── home.css
+│   │   ├── searchResults.css
+│   │   ├── movieDetails.css
+│   │   ├── RandomMovie.css
+│   │   ├── Watchlist.css
+│   │   ├── ai_chatbot.css
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── .env
+│   ├── api.js
+├── package.json
+└── vite.config.js */

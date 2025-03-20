@@ -1,0 +1,182 @@
+/* Navbar Styling */
+.navbar {
+  position: sticky;
+  top: 0;
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Netflix-Style Logo */
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo span {
+  color: #ffcc00;
+}
+
+/* Search Bar */
+.search-container {
+  position: relative;
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 35px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-container:hover .search-input {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.clear-search {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Live Search Dropdown */
+.search-dropdown {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  background: rgba(18, 18, 18, 0.95);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.search-result-img {
+  width: 40px;
+  height: 60px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Watchlist & Theme Toggle */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.watchlist-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  margin-right: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.watchlist-link:hover {
+  color: #ffcc00;
+}
+
+.watchlist-icon {
+  margin-right: 5px;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.theme-toggle:hover {
+  color: #ffcc00;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    width: 70%;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    gap: 5px;
+  }
+
+  .watchlist-link {
+    font-size: 14px;
+  }
+
+  .theme-toggle {
+    font-size: 18px;
+  }
+}
