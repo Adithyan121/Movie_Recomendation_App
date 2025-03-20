@@ -1,12 +1,56 @@
-# React + Vite
+# 🎬 Movie Recommendation App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive **Movie Recommendation App** built with **React.js** that allows users to search for movies, view details, watch trailers, and add favorites.
 
-Currently, two official plugins are available:
+## 📌 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ **Movie Search** – Search for movies using TMDb API.  
+✅ **Movie Details Page** – Displays movie title, overview, rating, genres, release date, and runtime.  
+✅ **YouTube Trailers** – Watch official trailers directly within the app using YouTube API.  
+✅ **Trending, Upcoming, and Top-Rated Movies** – Browse categorized lists of movies.  
+✅ **Favorites Page** – Save and manage your favorite movies.  
+✅ **Dark & Light Mode** – Toggle between themes for a better viewing experience.  
+✅ **Responsive Design** – Optimized for mobile and desktop users.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technologies Used
+
+- **Frontend:** React.js, CSS
+- **APIs:** TMDb API (Movie Data), YouTube API (Trailers)
+- **State Management:** Redux Toolkit
+- **Routing:** React Router
+- **Local Storage:** Store user’s favorites
+
+---
+
+## 🚀 Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```sh
+git clone https://github.com/Adithyan121/Movie_Recomendation_App.git
+cd Movie_Recomendation_App/frontend
+```
+
+### 2️⃣ Install Dependencies
+
+```sh
+npm install
+```
+
+### 3️⃣ Set Up API Keys
+
+Create a .env file in the root of the project and add:
+
+```sh
+REACT_APP_TMDB_API_KEY=your_tmdb_api_key
+REACT_APP_YOUTUBE_API_KEY=your_youtube_api_key
+```
+
+### 4️⃣ Start the App
+
+```sh
+npm start
+
+```

@@ -33,7 +33,17 @@ const Footer = () => {
 
         {/* Copyright Section */}
         <div className="footer-bottom">
-          <p>© 2025 MovieZone. All rights reserved.</p>
+        <p>
+        © 2025{" "}
+        <a
+          href="https://adithyan-phi.vercel.app/" // Replace with your desired link
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>Adithyan G</strong>
+        </a>{" "}
+        | All Rights Reserved
+      </p>
         </div>
       </div>
     </footer>

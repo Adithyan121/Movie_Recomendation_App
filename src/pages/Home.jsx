@@ -4,6 +4,7 @@ import MovieCard from "../components/MovieCard";
 import { getTrendingMovies, getUpcomingMovies, getTopRatedMovies } from "../../api";
 import Navbar from "../components/Navbar";
 import RandomMovies from "../components/RandomMovies"
+import Footer from "../components/Footer"
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -63,6 +64,7 @@ const Home = () => {
         </div>
       )}
     </div>
+    <Footer/>
     </div>
   );
 };

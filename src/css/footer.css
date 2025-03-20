@@ -24,6 +24,10 @@
     flex-wrap: wrap;
     margin-bottom: 15px;
   }
+  .footer a {
+    color: #ffa500;
+    text-decoration: none;
+  }
   
   .footer-link {
     color: #ccc;
