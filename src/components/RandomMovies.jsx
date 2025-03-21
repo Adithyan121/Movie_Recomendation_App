@@ -1,78 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
-import { getTrendingMovies } from "../../api";
-import "../css/randomMovies.css";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const RandomMovies = () => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [wishlist, setWishlist] = useState([]);
-
-  const navigate = useNavigate(); // ✅ Initialize useNavigate
+const RandomMovies = ({ setHeroMovie }) => {
+  const [randomMovies, setRandomMovies] = useState([]);
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
-    const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    setWishlist(savedWishlist);
-  }, []);
+    const fetchRandomMovies = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+        );
+        const movies = response.data.results;
 
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist]);
+        if (movies.length > 0) {
+          const shuffledMovies = movies.sort(() => 0.5 - Math.random()).slice(0, 5);
+          setRandomMovies(shuffledMovies);
+        }
+      } catch (error) {
+        console.error("Error fetching random movies:", error);
+      }
+    };
 
-  const fetchRandomMovies = async () => {
-    setLoading(true);
-    setTimeout(async () => {
-      const data = await getTrendingMovies();
-      const shuffledMovies = data.sort(() => Math.random() - 0.5).slice(0, 7);
-      setMovies(shuffledMovies);
-      setLoading(false);
-    }, 2000);
-  };
-
-  useEffect(() => {
     fetchRandomMovies();
-  }, []);
+  }, [API_KEY]);
 
-  const toggleWishlist = (movie) => {
-    const updatedWishlist = wishlist.some(item => item.id === movie.id)
-      ? wishlist.filter(item => item.id !== movie.id)
-      : [...wishlist, movie];
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      if (randomMovies.length > 0) {
+        setHeroMovie(randomMovies[index]);
+        index = (index + 1) % randomMovies.length;
+      }
+    }, 5000); // Change movie every 5 seconds
 
-    setWishlist(updatedWishlist);
-  };
+    return () => clearInterval(interval);
+  }, [randomMovies, setHeroMovie]);
 
-  return (
-    <div className="random-movies-container">
-      <h2>🎲 Random Movie Suggestions</h2>
-
-      {loading ? (
-        <div className="loading-message">🍿 Cooking movies for you...</div>
-      ) : (
-        <div className="carousel">
-          {movies.map((movie) => (
-            <div 
-              key={movie.id} 
-              className="movie-card"
-              onClick={() => navigate(`/movie/${movie.id}`)} // ✅ Redirect to MovieDetails
-            >
-              <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-              
-              <button className="wishlist-btn" onClick={(e) => { e.stopPropagation(); toggleWishlist(movie); }}>
-                {wishlist.some(item => item.id === movie.id) ? <FaHeart className="wishlist-icon active" /> : <FaRegHeart className="wishlist-icon" />}
-              </button>
-
-              <h3>{movie.title}</h3>
-              <p className="movie-rating">⭐ {movie.vote_average.toFixed(1)}/10</p> {/* ✅ Display Rating */}
-              <p className="movie-description">{movie.overview.substring(0, 100)}...</p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <button onClick={fetchRandomMovies} className="random-btn">🎥 Suggest New Movies</button>
-    </div>
-  );
+  return null;
 };
 
 export default RandomMovies;

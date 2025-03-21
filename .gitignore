@@ -7,19 +7,70 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+dist/
+dist-ssr/
+out/
+.next/
+.nuxt/
+.cache/
+.vite/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-".env" 
+
+# macOS system files
+._*
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Framework-specific ignores
+/.parcel-cache/
+.vercel/
+.netlify/
+firebase-debug.log
+functions/node_modules/
+
+# Next.js build files
+.next/
+
+# React/Vite build files
+.vite/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Lint and test coverage
+eslintcache
+coverage/

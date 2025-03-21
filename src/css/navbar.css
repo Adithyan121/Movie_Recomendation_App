@@ -1,17 +1,21 @@
 /* Navbar Styling */
+/* Navbar Styling */
 .navbar {
-  position: sticky;
-  top: 0;
-  /* width: 100%; */
+  width: 100%;
+  max-width: 1200px; /* Ensures navbar does not exceed container width */
+  padding: 15px 30px; /* Reduced padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-  background: rgba(18, 18, 18, 0.8);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
+  box-sizing: border-box;
 }
+
 
 /* Netflix-Style Logo */
 .logo {
@@ -157,11 +161,17 @@
   .search-container {
     width: 60%;
   }
+  .navbar {
+    padding: 10px 20px; /* Reduce padding for smaller screens */
+  }
 }
 
 @media (max-width: 480px) {
   .search-container {
     width: 70%;
+  }
+  .navbar {
+    padding: 8px 15px; /* Adjust padding for mobile */
   }
 
   .logo {

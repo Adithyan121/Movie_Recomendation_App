@@ -5,6 +5,7 @@ import { getTrendingMovies, getUpcomingMovies, getTopRatedMovies } from "../../a
 import Navbar from "../components/Navbar";
 import RandomMovies from "../components/RandomMovies"
 import Footer from "../components/Footer"
+import Hero from "../components/Hero";
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -33,9 +34,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <Navbar/>
+    <div className="container">
+      <Navbar className='navbar'/>
     <div className="home-container">
+      <Hero className='hero'/>
       <RandomMovies className='movie-random'/>
       <h2 className="section-title">🔥 Trending Movies</h2>
       {loading ? <p className="loading-text">Loading movies...</p> : (

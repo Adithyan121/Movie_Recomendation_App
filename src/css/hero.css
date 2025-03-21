@@ -1,0 +1,124 @@
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 50px;
+    color: white;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    margin-bottom: 50px;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .hero-overview {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+  
+  .hero-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .play-button, .info-button {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .play-button {
+    background-color: red;
+    color: white;
+  }
+  
+  .info-button {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+  
+  .play-button:hover {
+    background-color: #c00;
+  }
+  
+  .info-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Modal Styling */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: var(--bg-color);
+    padding: 20px;
+    width: 400px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      height: 70vh;
+      padding: 30px;
+    }
+  
+    .hero-title {
+      font-size: 2rem;
+    }
+  
+    .hero-overview {
+      font-size: 1rem;
+    }
+  
+    .play-button, .info-button {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  
+    .modal-content {
+      width: 90%;
+    }
+  }
+  
