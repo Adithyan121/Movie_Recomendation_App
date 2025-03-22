@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { FaSearch, FaHeart, FaSun, FaMoon, FaTimes } from "react-icons/fa";
 import "../css/navbar.css"; // Updated CSS
 import { searchMovies } from "../../api"; // Import search function
@@ -9,6 +9,8 @@ const Navbar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
+
+  const navigate = useNavigate(); // Hook for navigation
 
   useEffect(() => {
     document.body.classList.toggle("dark-mode", darkMode);
@@ -32,6 +34,13 @@ const Navbar = ({ onSearch }) => {
     const results = await searchMovies(query);
     setSearchResults(results);
     setShowResults(true);
+  };
+
+  // Redirect to movie details page on click
+  const handleMovieClick = (movieId) => {
+    setShowResults(false);
+    setSearchTerm(""); // Clear search input
+    navigate(`/movie/${movieId}`); // Navigate to MovieDetails page
   };
 
   return (
@@ -64,10 +73,10 @@ const Navbar = ({ onSearch }) => {
         {showResults && searchResults.length > 0 && (
           <div className="search-dropdown" onMouseDown={(e) => e.preventDefault()}>
             {searchResults.map((movie) => (
-              <Link
-                to={`/movie/${movie.id}`}
+              <div
                 key={movie.id}
                 className="search-result-item"
+                onClick={() => handleMovieClick(movie.id)} // Handle click
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
@@ -75,7 +84,7 @@ const Navbar = ({ onSearch }) => {
                   className="search-result-img"
                 />
                 <span>{movie.title}</span>
-              </Link>
+              </div>
             ))}
           </div>
         )}

@@ -1,9 +1,8 @@
 /* Navbar Styling */
-/* Navbar Styling */
 .navbar {
   width: 100%;
-  max-width: 1200px; /* Ensures navbar does not exceed container width */
-  padding: 15px 30px; /* Reduced padding */
+  max-width: 100%; 
+  padding: 15px 30px; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,8 +15,6 @@
   box-sizing: border-box;
 }
 
-
-/* Netflix-Style Logo */
 .logo {
   font-size: 26px;
   font-weight: bold;
@@ -26,7 +23,7 @@
 }
 
 .logo span {
-  color: #ffcc00;
+  color: red;
 }
 
 /* Search Bar */
@@ -73,8 +70,6 @@
   cursor: pointer;
   font-size: 16px;
 }
-
-/* Live Search Dropdown */
 .search-dropdown {
   position: absolute;
   top: 40px;
@@ -124,7 +119,7 @@
 }
 
 .watchlist-link:hover {
-  color: #ffcc00;
+  color: red;
 }
 
 .watchlist-icon {
@@ -141,7 +136,7 @@
 }
 
 .theme-toggle:hover {
-  color: #ffcc00;
+  color: red;
 }
 
 /* Fade-in Animation */
