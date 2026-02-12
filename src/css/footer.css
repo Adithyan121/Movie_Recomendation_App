@@ -1,78 +1,95 @@
 /* Netflix-Style Footer */
 .footer {
-    background: var(--bg-color);
-    backdrop-filter: blur(10px);
-    color: var(--text-color);
-    padding: 30px 0;
-    text-align: center;
-    font-size: 14px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .footer-container {
-    max-width: 1100px;
-    margin: auto;
-  }
-  
-  /* Footer Links */
+  background: var(--footer-bg);
+  backdrop-filter: blur(10px);
+  color: var(--text-color);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* Footer Links */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.footer-link {
+  color: var(--secondary-text);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: var(--primary-color);
+}
+
+/* Social Media Icons */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.social-icon {
+  font-size: 24px;
+  color: var(--secondary-text);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: var(--primary-color);
+}
+
+/* Copyright */
+.footer-bottom {
+  font-size: 13px;
+  opacity: 0.8;
+  color: var(--secondary-text);
+}
+
+.footer-bottom a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.portfolio-link {
+  font-weight: 700;
+  color: var(--primary-color) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.portfolio-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-  }
-  .footer a {
-    color: red;
-    text-decoration: none;
-  }
-  
-  .footer-link {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .footer-link:hover {
-    color: red;
-  }
-  
-  /* Social Media Icons */
-  .footer-social {
-    display: flex;
-    justify-content: center;
     gap: 15px;
-    margin-bottom: 15px;
+    font-size: 12px;
   }
-  
+
   .social-icon {
     font-size: 20px;
-    color: #ccc;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
   }
-  
-  .social-icon:hover {
-    transform: scale(1.2);
-    color: red;
-  }
-  
-  /* Copyright */
-  .footer-bottom {
-    font-size: 12px;
-    opacity: 0.8;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .footer-links {
-      gap: 15px;
-      font-size: 12px;
-    }
-    
-    .social-icon {
-      font-size: 18px;
-    }
-  }
-  
+}

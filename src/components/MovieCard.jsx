@@ -26,7 +26,7 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div className="movie-card">
-      <Link to={`/movie/${movie.id}`} className="movie-link">
+      <Link to={`/movie/${movie.id}/${movie.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="movie-link">
         {movie.poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

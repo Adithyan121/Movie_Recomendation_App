@@ -13,7 +13,12 @@ const Navbar = ({ onSearch }) => {
   const navigate = useNavigate(); // Hook for navigation
 
   useEffect(() => {
-    document.body.classList.toggle("dark-mode", darkMode);
+    // If darkMode is false, add 'light-mode' class, otherwise remove it
+    if (!darkMode) {
+      document.body.classList.add("light-mode");
+    } else {
+      document.body.classList.remove("light-mode");
+    }
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
@@ -37,17 +42,18 @@ const Navbar = ({ onSearch }) => {
   };
 
   // Redirect to movie details page on click
-  const handleMovieClick = (movieId) => {
+  const handleMovieClick = (movie) => {
     setShowResults(false);
     setSearchTerm(""); // Clear search input
-    navigate(`/movie/${movieId}`); // Navigate to MovieDetails page
+    const slug = movie.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    navigate(`/movie/${movie.id}/${slug}`); // Navigate to MovieDetails page
   };
 
   return (
     <nav className="navbar">
       {/* Netflix-Style Logo */}
       <Link to="/" className="logo">
-        MOVIE<span>ZONE</span>
+        UNCOVER<span>CINEMA</span>
       </Link>
 
       {/* Search Bar */}
@@ -76,7 +82,7 @@ const Navbar = ({ onSearch }) => {
               <div
                 key={movie.id}
                 className="search-result-item"
-                onClick={() => handleMovieClick(movie.id)} // Handle click
+                onClick={() => handleMovieClick(movie)} // Handle click
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}

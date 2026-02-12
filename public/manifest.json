@@ -1,0 +1,16 @@
+{
+    "name": "MovieZone",
+    "short_name": "MovieZone",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#121212",
+    "theme_color": "#e50914",
+    "description": "Find movies to watch tonight based on your mood, genre, and year.",
+    "icons": [
+        {
+            "src": "/vite.svg",
+            "sizes": "48x48 72x72 96x96 128x128 256x256 512x512",
+            "type": "image/svg+xml"
+        }
+    ]
+}

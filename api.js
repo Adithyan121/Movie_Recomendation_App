@@ -4,6 +4,8 @@ const YOUTUBE_BASE_URL = "https://www.googleapis.com/youtube/v3/search";
 const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 // Fetch Trending Movies
+console.log("TMDB API Key loaded:", API_KEY ? "Yes" : "No", API_KEY);
+
 export const getTrendingMovies = async () => {
   const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
   const data = await response.json();
@@ -45,4 +47,77 @@ export const searchMovies = async (query) => {
   const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
   const data = await response.json();
   return data.results;
+};
+
+// --- NEW FEATURES ---
+
+// Fetch Genres List
+export const getGenres = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
+    const data = await response.json();
+    return data.genres || [];
+  } catch (error) {
+    console.error("Error fetching genres:", error);
+    return [];
+  }
+};
+
+// Discover Movies (Filter by Genre, Year, Mood, Language)
+export const discoverMovies = async ({ genreId, year, mood, language }) => {
+  let query = `${BASE_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
+
+  if (year) {
+    query += `&primary_release_year=${year}`;
+  }
+
+  if (language) {
+    query += `&with_original_language=${language}`;
+  }
+
+  // Combine Genre + Mood Mapping
+  let activeGenreIds = [];
+
+  if (genreId) activeGenreIds.push(genreId);
+
+  if (mood) {
+    const moodMap = {
+      'happy': [35, 10751],     // Comedy, Family
+      'sad': [18],              // Drama
+      'exciting': [28, 12],     // Action, Adventure
+      'scary': [27, 53],        // Horror, Thriller
+      'romantic': [10749],      // Romance
+      'thoughtful': [99, 36],   // Documentary, History
+      'laugh': [35]             // Comedy
+    };
+    if (moodMap[mood]) {
+      activeGenreIds.push(...moodMap[mood]);
+    }
+  }
+
+  if (activeGenreIds.length > 0) {
+    const uniqueIds = [...new Set(activeGenreIds)];
+    query += `&with_genres=${uniqueIds.join('|')}`;
+  }
+
+  try {
+    const response = await fetch(query);
+    const data = await response.json();
+    return data.results || [];
+  } catch (error) {
+    console.error("Error discovering movies:", error);
+    return [];
+  }
+};
+
+// Fetch Watch Providers
+export const getMovieProviders = async (movieId) => {
+  try {
+    const response = await fetch(`${BASE_URL}/movie/${movieId}/watch/providers?api_key=${API_KEY}`);
+    const data = await response.json();
+    return data.results || {};
+  } catch (error) {
+    console.error("Error fetching movie providers:", error);
+    return {};
+  }
 };

@@ -1,187 +1,231 @@
-/* Navbar Styling */
+/* Modern Floating Navbar */
 .navbar {
-  width: 100%;
-  max-width: 100%; 
-  padding: 15px 30px; 
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  height: 70px;
+  /* Fixed height */
+  padding: 0 30px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+
+  background: var(--navbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-radius: 20px;
+  border: var(--glass-border);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
+/* Scrolled state could be handled by JS adding a class, but this style works generally */
+
 .logo {
-  font-size: 26px;
-  font-weight: bold;
-  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-color);
   text-decoration: none;
 }
 
 .logo span {
-  color: red;
+  color: var(--primary-color);
 }
 
-/* Search Bar */
+/* Search Area */
 .search-container {
-  position: relative;
-  width: 40%;
   display: flex;
   align-items: center;
+  position: relative;
+  width: 40%;
 }
 
 .search-input {
   width: 100%;
-  padding: 8px 35px;
-  font-size: 16px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  transition: all 0.3s ease-in-out;
+  padding: 10px 40px 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  /* Keep glass effect */
+  border-radius: 50px;
+  color: var(--text-color);
+  /* ADAPTIVE COLOR */
+  font-family: var(--font-main);
+  transition: all 0.3s ease;
   outline: none;
 }
 
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+body.light-mode .search-input {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
 }
 
-.search-container:hover .search-input {
-  background: rgba(255, 255, 255, 0.25);
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-color);
+  width: 100%;
+  /* Can expand if we want animation */
 }
 
 .search-icon {
   position: absolute;
-  left: 12px;
-  color: #fff;
-  font-size: 16px;
+  right: 15px;
+  color: var(--secondary-text);
 }
 
 .clear-search {
   position: absolute;
-  right: 12px;
+  right: 40px;
   background: none;
   border: none;
-  color: #fff;
+  color: var(--secondary-text);
   cursor: pointer;
-  font-size: 16px;
 }
+
+/* Right Side Controls */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.watchlist-link {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.watchlist-link:hover {
+  color: var(--primary-color);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-color);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* Search Dropdown - aligned to floating nav */
 .search-dropdown {
   position: absolute;
-  top: 40px;
+  top: 60px;
+  /* Just below input */
+  left: 0;
   width: 100%;
-  background: rgba(18, 18, 18, 0.95);
-  border-radius: 10px;
+  background: #1e293b;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-in-out;
-  max-height: 300px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  max-height: 400px;
   overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search-result-item {
   display: flex;
   align-items: center;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: #fff;
-  transition: all 0.3s ease-in-out;
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
 .search-result-item:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .search-result-img {
   width: 40px;
   height: 60px;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-/* Watchlist & Theme Toggle */
-.nav-links {
-  display: flex;
-  align-items: center;
-}
-
-.watchlist-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: white;
+  object-fit: cover;
+  border-radius: 4px;
   margin-right: 15px;
-  transition: all 0.3s ease-in-out;
 }
 
-.watchlist-link:hover {
-  color: red;
-}
-
-.watchlist-icon {
-  margin-right: 5px;
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  color: #fff;
-  transition: all 0.3s ease-in-out;
-}
-
-.theme-toggle:hover {
-  color: red;
-}
-
-/* Fade-in Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-  .search-container {
-    width: 60%;
-  }
   .navbar {
-    padding: 10px 20px; /* Reduce padding for smaller screens */
+    width: 95%;
+    padding: 0 15px;
+    top: 10px;
+  }
+
+  /* Show full logo */
+  .logo span {
+    display: inline;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    /* Slightly smaller logo text */
+    white-space: nowrap;
+  }
+
+  .search-container {
+    width: 40%;
+    /* Reduced width */
+    margin: 0 10px;
+  }
+
+  .search-input {
+    padding: 8px 10px 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .search-icon {
+    right: 10px;
+    font-size: 0.9rem;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .watchlist-link {
+    font-size: 1rem;
+  }
+
+  .theme-toggle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .search-container {
-    width: 70%;
-  }
   .navbar {
-    padding: 8px 15px; /* Adjust padding for mobile */
+    padding: 0 10px;
+    /* Tighter padding */
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 1.1rem;
   }
 
-  .nav-links {
-    gap: 5px;
-  }
-
-  .watchlist-link {
-    font-size: 14px;
-  }
-
-  .theme-toggle {
-    font-size: 18px;
+  /* Search becomes icon-only/expanded on click in advanced designs, 
+       but here we'll just squeeze it */
+  .search-input::placeholder {
+    color: transparent;
+    /* Hide placeholder text to save space */
   }
 }

@@ -1,0 +1,165 @@
+/* Filter Bar - Floating Pill Design */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 15px 25px;
+    align-items: center;
+    background: rgba(30, 41, 59, 0.6);
+    /* Semi-transparent slate */
+    backdrop-filter: blur(16px);
+    border: var(--glass-border);
+    border-radius: 99px;
+    /* Pill shape container */
+    margin: 20px auto 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-width: fit-content;
+    justify-content: center;
+}
+
+/* Select Inputs */
+.filter-group {
+    position: relative;
+}
+
+.filter-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 10px 35px 10px 20px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: var(--text-color);
+    /* ADAPTIVE */
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+body.light-mode .filter-select {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.filter-select:hover,
+.filter-select:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(15, 23, 42, 0.9);
+}
+
+/* Mood Buttons - Iconic */
+.mood-selector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mood-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--secondary-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+}
+
+body.light-mode .mood-btn {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--secondary-text);
+}
+
+body.light-mode .mood-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+.mood-btn .mood-icon {
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+/* Tooltip on Hover */
+.mood-btn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #0f172a;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mood-btn:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.mood-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.mood-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    /* Glow effect */
+    transform: scale(1.1);
+}
+
+/* Hide text label for the "pure icon" look requested */
+.mood-label {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .filter-bar {
+        flex-direction: column;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 100%;
+        gap: 20px;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+    .mood-selector {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
